@@ -3,13 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
-    // Start is called before the first frame update
-    void Start() {
+    private Rigidbody2D rigidbody2d;
+    private float input;
+    [SerializeField] [Range(0,10)]private float speed = 4;
 
+    private void Awake() {
+        rigidbody2d = GetComponent<Rigidbody2D>();    
     }
 
-    // Update is called once per frame
-    void Update() {
+    private void Update() {
+        // get input on horizontal axis
+        input = Input.GetAxisRaw("Horizontal");
+    }
 
+    private void FixedUpdate() {
+        rigidbody2d.velocity = new Vector2(input * speed, 0);
     }
 }
