@@ -12,6 +12,7 @@ public class Ball : MonoBehaviour {
     [SerializeField] private TextMeshProUGUI respawnText;
     private bool respawn = true;
     private bool death = false;
+    GameObject MySceneManager;
 
     // TODO: move this somewhere else
     private int lives = 3;
@@ -20,6 +21,8 @@ public class Ball : MonoBehaviour {
         // Get the rigidbody of the ball
         rigidbody2d = GetComponent<Rigidbody2D>();
         initialPosition = transform.position;
+
+        MySceneManager = GameObject.Find("MySceneManager");
     }
 
     void Start() {
@@ -56,6 +59,9 @@ public class Ball : MonoBehaviour {
             respawnText.text = "";
         }
         if (Input.GetKeyDown(KeyCode.Space) && death) {
+            MySceneManager.GetComponent<MySceneManager>().ResetBricks();
+            MySceneManager.GetComponent<MySceneManager>().FindScoreText();
+            MySceneManager.GetComponent<MySceneManager>().ResetScore();
             SceneManager.LoadScene(1);
         }
     }
