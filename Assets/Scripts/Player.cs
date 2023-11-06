@@ -12,7 +12,6 @@ public class Player : MonoBehaviour {
     }
 
     private void Update() {
-        // get input on horizontal axis
         input = Input.GetAxisRaw("Horizontal");
     }
 

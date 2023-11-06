@@ -7,12 +7,35 @@ using TMPro;
 public class MySceneManager : MonoBehaviour {
     private int activeBricks = 0;
     private int score = 0;
+    private int lives = 3;
 
     private TMP_Text scoreText;
+    private TMP_Text livesText;
+    private TMP_Text lostText;
+    private TMP_Text respawnText;
+
+    private GameObject ball;
+
+    private bool respawn = true;
+    private bool death = false;
 
     private void Update() {
-        if (scoreText == null) {
-            FindScoreText();
+        if (!CheckRefrences()) {
+            FindRefrences();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space) && respawn) {
+            ball.GetComponent<Ball>().BallStart();
+            respawn = false;
+            respawnText.text = "";
+        }
+        if (Input.GetKeyDown(KeyCode.Space) && death) {
+            respawn = true;
+            death = false;
+            ResetLives();
+            ResetBricks();
+            ResetScore();
+            LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 
@@ -21,7 +44,7 @@ public class MySceneManager : MonoBehaviour {
         scoreText.text = score.ToString();
         activeBricks--;
         if (activeBricks == 0) {
-            LoadNextScene();
+            LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 
@@ -29,37 +52,77 @@ public class MySceneManager : MonoBehaviour {
         activeBricks++;
     }
 
-    public void ResetBricks() {
+    private void ResetBricks() {
         activeBricks = 0;
     }
 
-    public void FindScoreText() {
+    private void FindRefrences() {
+        // use tags?
         scoreText = GameObject.Find("Canvas/Score").GetComponent<TMP_Text>();
         scoreText.text = score.ToString();
+        livesText = GameObject.Find("Canvas/Lives").GetComponent<TMP_Text>();
+        livesText.text = lives.ToString();
+
+        lostText = GameObject.Find("Canvas/Lost").GetComponent<TMP_Text>();
+        respawnText = GameObject.Find("Canvas/Respawn").GetComponent<TMP_Text>();
+
+        ball = GameObject.Find("Ball");
     }
 
-    public void ResetScore() {
+    private bool CheckRefrences() {
+        // maybe change using a list
+
+        if (scoreText == null) {
+            return false;
+        }
+        if (livesText == null) {
+            return false;
+        }
+        if (lostText == null) {
+            return false;
+        }
+        if (respawnText == null) {
+            return false;
+        }
+        if (ball == null) {
+            return false;
+        }
+
+        return true;
+    }
+
+    private void ResetScore() {
         score = 0;
         scoreText.text = score.ToString();
     }
 
-    // TODO: move this somewhere else
-    public void LoadNextScene() {
-        // determine current scene index
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+    public void LifeLost() {
+        lives--;
+        livesText.text = lives.ToString();
+        if (lives == 0) {
+            death = true;
+            lostText.text = "You lost!";
+            respawnText.text = "press space to retry";
+        } else {
+            respawn = true;
+            respawnText.text = "press space to continue";
+        }
+    }
 
-        // define target scene index
-        int targetSceneIndex = currentSceneIndex + 1;
+    private void ResetLives() {
+        lives = 3;
+    }
 
+    public void LoadScene(int targetScene) {
         // check if target scene index is out of bounds
-        if (targetSceneIndex >= SceneManager.sceneCountInBuildSettings) {
-            targetSceneIndex = 0;
+        if (targetScene >= SceneManager.sceneCountInBuildSettings) {
+            targetScene = 0;
         }
 
         // reset brick count
         activeBricks = 0;
 
         // load target scene
-        SceneManager.LoadScene(targetSceneIndex);
+        SceneManager.LoadScene(targetScene);
     }
 }

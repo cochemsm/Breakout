@@ -12,7 +12,7 @@ public class mainMenu : MonoBehaviour {
 
     // load first level when play button is pressed
     public void Play() {
-        MySceneManager.GetComponent<MySceneManager>().LoadNextScene();
+        MySceneManager.GetComponent<MySceneManager>().LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     // close game when quit button is pressed
