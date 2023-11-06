@@ -20,7 +20,15 @@ public class Ball : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.GetComponent<Rigidbody2D>()) {
-            rigidbody2d.velocity = (rigidbody2d.velocity + collision.gameObject.GetComponent<Rigidbody2D>().velocity).normalized * rigidbody2d.velocity.magnitude;
+            if (collision.collider.transform.position.y > transform.position.y) return;
+
+            float diff = transform.position.x - collision.collider.transform.position.x;
+            float percent = diff / collision.collider.transform.localScale.x + 0.5f;
+
+            rigidbody2d.velocity = 
+                (rigidbody2d.velocity +
+                collision.gameObject.GetComponent<Rigidbody2D>().velocity + 
+                new Vector2(Mathf.Lerp(-1f, 1f, percent), 1)).normalized * rigidbody2d.velocity.magnitude;
         }
     }
 

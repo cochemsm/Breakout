@@ -30,7 +30,6 @@ public class MySceneManager : MonoBehaviour {
             respawnText.text = "";
         }
         if (Input.GetKeyDown(KeyCode.Space) && death) {
-            respawn = true;
             death = false;
             ResetLives();
             ResetBricks();
@@ -114,6 +113,8 @@ public class MySceneManager : MonoBehaviour {
     }
 
     public void LoadScene(int targetScene) {
+        respawn = true;
+
         // check if target scene index is out of bounds
         if (targetScene >= SceneManager.sceneCountInBuildSettings) {
             targetScene = 0;
@@ -124,5 +125,7 @@ public class MySceneManager : MonoBehaviour {
 
         // load target scene
         SceneManager.LoadScene(targetScene);
+
+        FindRefrences();
     }
 }
