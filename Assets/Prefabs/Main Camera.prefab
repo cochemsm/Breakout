@@ -241,7 +241,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2435888769174287861}
   - component: {fileID: 4023678437663413936}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ballTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}

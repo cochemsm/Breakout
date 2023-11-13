@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Brick : MonoBehaviour {
+    public delegate void BrickHitDelegate(Brick brickThatWasHit);
+    public event BrickHitDelegate OnBrickHit;
     GameObject MySceneManager;
 
     private void Awake() {
@@ -14,5 +16,6 @@ public class Brick : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision) {
         MySceneManager.GetComponent<MySceneManager>().BrickBroken();
         Destroy(gameObject);
+        OnBrickHit?.Invoke(this);
     }
 }

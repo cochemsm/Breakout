@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour {
     private Rigidbody2D rigidbody2d;
     private float input;
@@ -17,5 +18,7 @@ public class Player : MonoBehaviour {
 
     private void FixedUpdate() {
         rigidbody2d.velocity = new Vector2(input * speed, 0);
+
+
     }
 }
