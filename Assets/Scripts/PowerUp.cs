@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PowerUp {
-    public enum typesOfPowerUps {Rocket, Sticky}
+    public enum typesOfPowerUps {Rocket}
     public typesOfPowerUps Type { get; private set; }
 
     public PowerUp() {
@@ -12,5 +12,9 @@ public class PowerUp {
 
     public void activatePowerUp() {
         Debug.Log("Power Up activated. Power Up: " + Type);
+    }
+
+    public void RocketPowerUp() {
+        
     }
 }

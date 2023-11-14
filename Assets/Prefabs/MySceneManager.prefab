@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31cd29903c5349547885a8b4ea4b8642, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rocketPowerUpPrefab: {fileID: 5648382304173257851, guid: 40f6704bfcc3b364faf649790d081f6c, type: 3}
 --- !u!114 &7595293308101561870
 MonoBehaviour:
   m_ObjectHideFlags: 0

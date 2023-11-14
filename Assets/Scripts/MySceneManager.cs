@@ -15,9 +15,13 @@ public class MySceneManager : MonoBehaviour {
     private TMP_Text respawnText;
 
     private GameObject ball;
+    private GameObject player;
 
     private bool respawn = true;
     private bool death = false;
+
+    private PowerUps powerUp;
+    public GameObject rocketPowerUpPrefab;
 
     private void Update() {
         if (!CheckRefrences()) {
@@ -35,6 +39,13 @@ public class MySceneManager : MonoBehaviour {
             ResetBricks();
             ResetScore();
             LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
+        if (GameObject.FindGameObjectWithTag("powerUp") != null) {
+            if (powerUp == null) {
+                powerUp = GameObject.FindGameObjectWithTag("powerUp").GetComponent<PowerUps>();
+                powerUp.PowerUpEvent += PowerUps_PowerUpEvent;
+            }
         }
     }
 
@@ -65,7 +76,8 @@ public class MySceneManager : MonoBehaviour {
         lostText = GameObject.Find("Canvas/Lost").GetComponent<TMP_Text>();
         respawnText = GameObject.Find("Canvas/Respawn").GetComponent<TMP_Text>();
 
-        ball = GameObject.Find("Ball");
+        ball = GameObject.FindGameObjectWithTag("ball");
+        player = GameObject.FindGameObjectWithTag("player");
     }
 
     private bool CheckRefrences() {
@@ -84,6 +96,9 @@ public class MySceneManager : MonoBehaviour {
             return false;
         }
         if (ball == null) {
+            return false;
+        }
+        if (player == null) {
             return false;
         }
 
@@ -127,5 +142,12 @@ public class MySceneManager : MonoBehaviour {
         SceneManager.LoadScene(targetScene);
 
         FindRefrences();
+    }
+
+    private void PowerUps_PowerUpEvent(PowerUp activePowerUp) {
+        activePowerUp.activatePowerUp();
+        if (activePowerUp.Type == PowerUp.typesOfPowerUps.Rocket) {
+            Instantiate(rocketPowerUpPrefab, player.transform.position, Quaternion.identity);
+        }
     }
 }

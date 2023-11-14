@@ -17,8 +17,6 @@ public class Player : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        rigidbody2d.velocity = new Vector2(input * speed, 0);
-
-
+        rigidbody2d.velocity = new Vector2(input * speed, 0);        
     }
 }

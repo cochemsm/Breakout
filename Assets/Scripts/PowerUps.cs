@@ -17,9 +17,7 @@ public class PowerUps : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision) {
         Destroy(gameObject);
 
-        PowerUp test = new PowerUp();
-        PowerUpEvent?.Invoke(test);
-        test.activatePowerUp();
+        PowerUpEvent?.Invoke(new PowerUp());
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
