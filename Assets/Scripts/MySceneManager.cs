@@ -67,14 +67,13 @@ public class MySceneManager : MonoBehaviour {
     }
 
     private void FindRefrences() {
-        // use tags?
-        scoreText = GameObject.Find("Canvas/Score").GetComponent<TMP_Text>();
+        scoreText = GameObject.FindGameObjectWithTag("Score").GetComponent<TMP_Text>();
         scoreText.text = score.ToString();
-        livesText = GameObject.Find("Canvas/Lives").GetComponent<TMP_Text>();
+        livesText = GameObject.FindGameObjectWithTag("Lives").GetComponent<TMP_Text>();
         livesText.text = lives.ToString();
 
-        lostText = GameObject.Find("Canvas/Lost").GetComponent<TMP_Text>();
-        respawnText = GameObject.Find("Canvas/Respawn").GetComponent<TMP_Text>();
+        lostText = GameObject.FindGameObjectWithTag("Lost").GetComponent<TMP_Text>();
+        respawnText = GameObject.FindGameObjectWithTag("Respawn").GetComponent<TMP_Text>();
 
         ball = GameObject.FindGameObjectWithTag("ball");
         player = GameObject.FindGameObjectWithTag("player");

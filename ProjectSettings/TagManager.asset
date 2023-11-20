@@ -9,6 +9,9 @@ TagManager:
   - brick
   - powerUp
   - activePowerUp
+  - Lives
+  - Lost
+  - Score
   layers:
   - Default
   - TransparentFX
