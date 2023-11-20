@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -79,13 +79,13 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.000055357814, y: 0.1862526}
-      - {x: -0.06525174, y: 0.09910765}
-      - {x: -0.050203755, y: 0.09904766}
-      - {x: -0.050301105, y: -0.1003201}
-      - {x: 0.050043106, y: -0.100409865}
-      - {x: 0.050158933, y: 0.098974556}
-      - {x: 0.06514102, y: 0.098991394}
+    - - {x: 0.0007786304, y: 0.11786115}
+      - {x: -0.0735921, y: 0.04322681}
+      - {x: -0.051037744, y: 0.043166816}
+      - {x: -0.051135093, y: -0.11700094}
+      - {x: 0.05171132, y: -0.115422666}
+      - {x: 0.051827148, y: 0.04309371}
+      - {x: 0.07348162, y: 0.045612633}
   m_UseDelaunayMesh: 0
 --- !u!50 &4774085089970096487
 Rigidbody2D:
@@ -127,6 +127,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
+  speedActive: {x: 0, y: 0}
+  angle: 0
 --- !u!212 &796931372107709642
 SpriteRenderer:
   m_ObjectHideFlags: 0

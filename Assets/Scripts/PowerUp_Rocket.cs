@@ -11,8 +11,21 @@ public class PowerUp_Rocket : MonoBehaviour {
 
     private void Awake() {
         rigidbody2d = GetComponent<Rigidbody2D>();
-        
-        
+
+        bricks = GameObject.FindGameObjectsWithTag("brick");
+        target = FindNearestTransformAndSetVector();
+
+        //Achtung Gerrit hat hier änderungen Vorgenommen. Keine Haftung.
+        Vector2 targetdirection = target.position - transform.position;
+        float angle = Mathf.Atan(targetdirection.y / targetdirection.x) * Mathf.Rad2Deg;
+        if (angle > 0) {
+            angle = 90f - angle;
+        } else {
+            angle = -90f - angle;
+        }
+        transform.rotation = Quaternion.Euler(0, 0, -angle);
+
+        rigidbody2d.velocity = targetdirection * speed;
     }
 
     private Transform FindNearestTransformAndSetVector() {
@@ -24,19 +37,8 @@ public class PowerUp_Rocket : MonoBehaviour {
                 tempF = Vector2.Distance(brick.transform.position, transform.position);
             }
         }
-        rigidbody2d.velocity = speed * Vector2.up;
-        return temp.transform;
-    }
 
-    private void FixedUpdate() {
-        bricks = GameObject.FindGameObjectsWithTag("brick");
-        target = FindNearestTransformAndSetVector();
-        //Achtung Gerrit hat hier änderungen Vorgenommen. Keine Haftung.
-        Vector2 targetdirection = target.position - transform.position;
-        float angle = Mathf.Tan(targetdirection.y / targetdirection.x);
-        transform.rotation = Quaternion.Euler(0, 0, angle);
-        if (rigidbody2d.velocity.magnitude < 1) rigidbody2d.velocity = rigidbody2d.velocity.normalized * 5f;
-        rigidbody2d.velocity = (rigidbody2d.velocity + (Vector2) (target.position - transform.position)).normalized * rigidbody2d.velocity.magnitude;
+        return temp.transform;
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
