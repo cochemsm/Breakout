@@ -13,11 +13,12 @@ public class PowerUpSpawner : MonoBehaviour {
         }
     }
 
-    private void Brick_OnBrickHit(Brick brickThatWasHit) {
+    private void Brick_OnBrickHit(Brick brickThatWasHit) {/*
         int diceRoll = Random.Range(0, 6) + 1;
         if (diceRoll == 6) {
             SpawnPowerUp();
-        }
+        }*/
+        SpawnPowerUp();
     }
 
     void SpawnPowerUp() {

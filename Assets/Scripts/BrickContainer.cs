@@ -8,22 +8,32 @@ public class BrickContainer : MonoBehaviour {
     private TextAsset level;
 
     private void Awake() {
-        level = Resources.Load<TextAsset>("level000");
+        LoadLevel();
     }
 
-    private GameObject FindType() {
+    private void LoadLevel() {
+        level = Resources.Load<TextAsset>("level000");
         char[] type = level.text.ToCharArray();
         foreach (char c in type) {
-            if (c == '#') {
-                return brickPrefab;
-            } else {
-                return null;
-            }
+            SpawnBrick(FindType(c), new Vector3(0, 0, 0));
         }
-        return null;
     }
 
-    private void SpawnBrick() {
-        Instantiate(brickPrefab, Vector3.zero , Quaternion.identity, transform);
+    private GameObject FindType(char c) {
+        if (c == '#') {
+            return brickPrefab;
+        } else {
+            return null;
+        }
+    }
+
+    private void SpawnBrick(GameObject brick, Vector3 cords) {
+        if (brick != null) { 
+            Instantiate(brick, cords , Quaternion.identity, transform);
+        }
+    }
+
+    private void CheckBricks() {
+        
     }
 }
