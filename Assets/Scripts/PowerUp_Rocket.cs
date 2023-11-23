@@ -43,8 +43,18 @@ public class PowerUp_Rocket : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.tag == "brick") {
-            transform.GetComponent<SpriteRenderer>().enabled = false;
-            transform.GetComponent<ParticleSystem>().Stop();
+            ParticleSystem[] children = transform.GetComponentsInChildren<ParticleSystem>();
+            foreach (var child in children) {
+                child.Stop();
+            }
+            
+            transform.DetachChildren();
+            Destroy(gameObject);
         }
+
+
+
+        // transform.GetComponent<SpriteRenderer>().enabled = false;
+        // transform.GetComponent<ParticleSystem>().Stop();
     }
 }
