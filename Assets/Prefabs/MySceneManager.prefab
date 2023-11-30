@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rocketPowerUpPrefab: {fileID: 5648382304173257851, guid: 40f6704bfcc3b364faf649790d081f6c, type: 3}
+  laserPowerUpPrefab: {fileID: 4471684696518651827, guid: 579774774b3a3014db81dcc76bc73f8c, type: 3}
 --- !u!114 &7595293308101561870
 MonoBehaviour:
   m_ObjectHideFlags: 0

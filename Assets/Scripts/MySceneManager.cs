@@ -22,6 +22,7 @@ public class MySceneManager : MonoBehaviour {
 
     private PowerUps powerUp;
     public GameObject rocketPowerUpPrefab;
+    public GameObject laserPowerUpPrefab;
 
     private void Update() {
         if (!CheckRefrences()) {
@@ -147,6 +148,9 @@ public class MySceneManager : MonoBehaviour {
         activePowerUp.activatePowerUp();
         if (activePowerUp.Type == PowerUp.typesOfPowerUps.Rocket) {
             Instantiate(rocketPowerUpPrefab, player.transform.position, Quaternion.identity);
+        }
+        if (activePowerUp.Type == PowerUp.typesOfPowerUps.Laser) {
+            Instantiate(laserPowerUpPrefab, player.transform.position, Quaternion.identity);
         }
     }
 }

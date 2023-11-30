@@ -40,7 +40,7 @@ public class Ball : MonoBehaviour {
     }
 
     public void BallStart() {
-        rigidbody2d.velocity = new Vector2(Random.Range(-10f, 10f), 4);
+        rigidbody2d.velocity = new Vector2(Random.Range(-5f, 5f), 4).normalized * 4f;
         move = true;
     }
 

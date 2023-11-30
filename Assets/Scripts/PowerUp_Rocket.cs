@@ -51,10 +51,5 @@ public class PowerUp_Rocket : MonoBehaviour {
             transform.DetachChildren();
             Destroy(gameObject);
         }
-
-
-
-        // transform.GetComponent<SpriteRenderer>().enabled = false;
-        // transform.GetComponent<ParticleSystem>().Stop();
     }
 }

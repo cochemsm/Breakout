@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 
 public class BrickContainer : MonoBehaviour {
     [SerializeField] private GameObject brickPrefab;
-    private char[,] bricks = new char[11, 10];
+    private char[,] bricks = new char[10, 11];
     private int BrickAmount;
     private TextAsset level;
 
@@ -18,13 +18,16 @@ public class BrickContainer : MonoBehaviour {
         level = Resources.Load<TextAsset>("level000");
         char[] type = level.text.ToCharArray();
         int y = 0;
-        for (int x = 0; x < type.Length; x++) {
-            if (type[x] == type[10]) {
-                y++;
-            } else if (type[x] == type[11]) {
+        int x = 0;
+        for (int i = 0; i < type.Length; i++) {
+            if (type[i] == type[10] || type[i] == type[11]) {
                 continue;
-            } else {
-                bricks[y, x % 10] = type[x];
+            }
+            bricks[x, y] = type[i];
+            x++;
+            if (x >= bricks.GetLength(0)) {
+                y++;
+                x = 0;
             }
         }
     }
@@ -47,9 +50,9 @@ public class BrickContainer : MonoBehaviour {
     }
 
     private void SetPositionOfAllBricks() {
-        for (int y = 0; y < bricks.GetLength(0); y++) {
-            for (int x = 0; x < bricks.GetLength(1); x++) {
-                SpawnBrick(FindType(bricks[y, x]), new Vector3(((x + 1) * 0.6f) - 3.3f, ((y + 1) * 0.25f) + 1.2f, 0));
+        for (int x = 0; x < bricks.GetLength(0); x++) {
+            for (int y = 0; y < bricks.GetLength(1); y++) {
+                SpawnBrick(FindType(bricks[x, y]), new Vector3(((x + 1) * 0.6f) - 3.3f, ((y + 1) * -0.25f) + 3.95f, 0));
             }
         }
     }
