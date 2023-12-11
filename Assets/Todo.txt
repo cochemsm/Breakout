@@ -1,0 +1,46 @@
+Power Ups
+    Laser
+    Jetpack
+    Fist
+    Heart
+Change when power up is picked
+SceneManager -> GameManager singleton
+Level Building using SciptableObjects
+Level Builden
+Boss fight
+More Brick types?
+Audio
+    Music
+    Rocket
+    Ball hit
+    Brick destroy
+    Laser
+    Jetpack
+    Heart
+    Fist
+Particle
+    Brick destroy
+    Rocket destroy
+    Jetpack
+    Heart
+Sprites
+    New Bricks
+    New Player
+    New Rocket
+    New Ball?
+    Rocket Trail Particles
+    Laser
+    Laser End
+    Jetpack
+    Fist
+    Boss
+    Brick types?
+    Border
+UI
+    Hearts at Health
+    Change font?
+Main Menu
+    GameManager fix (no refs)
+    Button Sprites
+    New Background
+New Border
