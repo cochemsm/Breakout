@@ -36,6 +36,7 @@ Sprites
     Boss
     Brick types?
     Border
+    Background
 UI
     Hearts at Health
     Change font?
