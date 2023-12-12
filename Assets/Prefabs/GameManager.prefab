@@ -9,10 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2751545351922183084}
-  - component: {fileID: 7976941791495219780}
-  - component: {fileID: 7595293308101561870}
+  - component: {fileID: 2813131949618081059}
   m_Layer: 0
-  m_Name: MySceneManager
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7976941791495219780
+--- !u!114 &2813131949618081059
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,21 +41,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 6808484832601400967}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31cd29903c5349547885a8b4ea4b8642, type: 3}
+  m_Script: {fileID: 11500000, guid: d55b9793b28f1ca4b8f74b2a1f7f3a56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rocketPowerUpPrefab: {fileID: 5648382304173257851, guid: 40f6704bfcc3b364faf649790d081f6c, type: 3}
   laserPowerUpPrefab: {fileID: 4471684696518651827, guid: 579774774b3a3014db81dcc76bc73f8c, type: 3}
---- !u!114 &7595293308101561870
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6808484832601400967}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08b0416550befaf48ba60837d85af3c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectID: 

@@ -1,10 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 
-public class MySceneManager : MonoBehaviour {
+public class GameManager : MonoBehaviour {
+    public static GameManager instance;
+    public static GameManager Instance => instance;
+
     private int activeBricks = 0;
     private int score = 0;
     private int lives = 3;
@@ -23,6 +24,16 @@ public class MySceneManager : MonoBehaviour {
     private PowerUps powerUp;
     public GameObject rocketPowerUpPrefab;
     public GameObject laserPowerUpPrefab;
+
+    private void Awake() {
+        if (instance != null) {
+            Destroy(gameObject);
+            return;
+        }    
+
+        instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
 
     private void Update() {
         if (!CheckRefrences()) {
@@ -68,6 +79,10 @@ public class MySceneManager : MonoBehaviour {
     }
 
     private void FindRefrences() {
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("mainMenu")) {
+            return;
+        }
+
         scoreText = GameObject.FindGameObjectWithTag("Score").GetComponent<TMP_Text>();
         scoreText.text = score.ToString();
         livesText = GameObject.FindGameObjectWithTag("Lives").GetComponent<TMP_Text>();

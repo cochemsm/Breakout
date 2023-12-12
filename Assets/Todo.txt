@@ -4,11 +4,14 @@ Power Ups
     Fist
     Heart
 Change when power up is picked
-SceneManager -> GameManager singleton
-Level Building using SciptableObjects
+
+Level Building using SciptableObjects (at the end)
+
 Level Builden
-Boss fight
+Boss fight (when time left)
 More Brick types?
+Border
+
 Audio
     Music
     Rocket
@@ -18,11 +21,13 @@ Audio
     Jetpack
     Heart
     Fist
+
 Particle
     Brick destroy
     Rocket destroy
     Jetpack
     Heart
+
 Sprites
     New Bricks
     New Player
@@ -37,11 +42,10 @@ Sprites
     Brick types?
     Border
     Background
+
 UI
-    Hearts at Health
     Change font?
 Main Menu
     GameManager fix (no refs)
     Button Sprites
     New Background
-New Border
