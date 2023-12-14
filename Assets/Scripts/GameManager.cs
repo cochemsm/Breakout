@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour {
     private TMP_Text respawnText;
 
     private GameObject ball;
-    private GameObject player;
+    private Player player;
 
     private bool respawn = true;
     private bool death = false;
@@ -92,7 +92,7 @@ public class GameManager : MonoBehaviour {
         respawnText = GameObject.FindGameObjectWithTag("Respawn").GetComponent<TMP_Text>();
 
         ball = GameObject.FindGameObjectWithTag("ball");
-        player = GameObject.FindGameObjectWithTag("player");
+        player = GameObject.FindGameObjectWithTag("player").GetComponent<Player>();
     }
 
     private bool CheckRefrences() {
@@ -166,6 +166,11 @@ public class GameManager : MonoBehaviour {
         }
         if (activePowerUp.Type == PowerUp.typesOfPowerUps.Laser) {
             Instantiate(laserPowerUpPrefab, player.transform.position, Quaternion.identity);
+        }
+        if (activePowerUp.Type == PowerUp.typesOfPowerUps.Heart) {
+            lives++;
+            livesText.text = lives.ToString();
+            player.PlayHearts();
         }
     }
 }
