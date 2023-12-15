@@ -1,10 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 
-public class MySceneManager : MonoBehaviour {
+public class GameManager : MonoBehaviour {
+    public static GameManager instance;
+    public static GameManager Instance => instance;
+
     private int activeBricks = 0;
     private int score = 0;
     private int lives = 3;
@@ -15,7 +16,7 @@ public class MySceneManager : MonoBehaviour {
     private TMP_Text respawnText;
 
     private GameObject ball;
-    private GameObject player;
+    private Player player;
 
     private bool respawn = true;
     private bool death = false;
@@ -23,6 +24,16 @@ public class MySceneManager : MonoBehaviour {
     private PowerUps powerUp;
     public GameObject rocketPowerUpPrefab;
     public GameObject laserPowerUpPrefab;
+
+    private void Awake() {
+        if (instance != null) {
+            Destroy(gameObject);
+            return;
+        }    
+
+        instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
 
     private void Update() {
         if (!CheckRefrences()) {
@@ -68,6 +79,10 @@ public class MySceneManager : MonoBehaviour {
     }
 
     private void FindRefrences() {
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("mainMenu")) {
+            return;
+        }
+
         scoreText = GameObject.FindGameObjectWithTag("Score").GetComponent<TMP_Text>();
         scoreText.text = score.ToString();
         livesText = GameObject.FindGameObjectWithTag("Lives").GetComponent<TMP_Text>();
@@ -77,7 +92,7 @@ public class MySceneManager : MonoBehaviour {
         respawnText = GameObject.FindGameObjectWithTag("Respawn").GetComponent<TMP_Text>();
 
         ball = GameObject.FindGameObjectWithTag("ball");
-        player = GameObject.FindGameObjectWithTag("player");
+        player = GameObject.FindGameObjectWithTag("player").GetComponent<Player>();
     }
 
     private bool CheckRefrences() {
@@ -151,6 +166,11 @@ public class MySceneManager : MonoBehaviour {
         }
         if (activePowerUp.Type == PowerUp.typesOfPowerUps.Laser) {
             Instantiate(laserPowerUpPrefab, player.transform.position, Quaternion.identity);
+        }
+        if (activePowerUp.Type == PowerUp.typesOfPowerUps.Heart) {
+            lives++;
+            livesText.text = lives.ToString();
+            player.PlayHearts();
         }
     }
 }

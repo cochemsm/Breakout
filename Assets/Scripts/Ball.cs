@@ -1,21 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-using UnityEngine.SceneManagement;
 
 public class Ball : MonoBehaviour {
     Rigidbody2D rigidbody2d;
     private Vector3 initialPosition;
     private bool move = false;
 
-    GameObject MySceneManager;
-
     private void Awake() {
         rigidbody2d = GetComponent<Rigidbody2D>();
-        initialPosition = transform.position;
-
-        MySceneManager = GameObject.Find("MySceneManager");
+        initialPosition = transform.position;;
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
@@ -35,7 +27,7 @@ public class Ball : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision) {
         rigidbody2d.velocity = Vector2.zero;
         rigidbody2d.position = initialPosition;
-        MySceneManager.GetComponent<MySceneManager>().LifeLost();
+        GameManager.Instance.LifeLost();
         move = false;
     }
 

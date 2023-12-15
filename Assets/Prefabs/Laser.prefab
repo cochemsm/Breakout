@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3838233993904053847}
   - component: {fileID: 131440564588837121}
   - component: {fileID: 6169759601828468521}
+  - component: {fileID: 7355442840920056365}
   m_Layer: 11
   m_Name: Laser
   m_TagString: activePowerUp
@@ -106,3 +107,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7355442840920056365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4471684696518651827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64a5107c44e069148bcfe1c4882bc21f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

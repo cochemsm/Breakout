@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PowerUp {
-    public enum typesOfPowerUps {Rocket, Laser}
+    public enum typesOfPowerUps {Rocket, Laser, Heart}
     public typesOfPowerUps Type { get; private set; }
 
     public PowerUp() {
