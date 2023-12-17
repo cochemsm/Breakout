@@ -2,12 +2,11 @@ Power Ups
     Laser
     Jetpack
     Fist
-    Heart
-Change when power up is picked
 
 Level Building using SciptableObjects (at the end)
 
 Level Builden
+
 Boss fight (when time left)
 More Brick types?
 Border
@@ -31,9 +30,6 @@ Particle
 Sprites
     New Bricks
     New Player
-    New Rocket
-    New Ball?
-    Rocket Trail Particles
     Laser
     Laser End
     Jetpack
@@ -45,6 +41,7 @@ Sprites
 
 UI
     Change font?
+
 Main Menu
     GameManager fix (no refs)
     Button Sprites
