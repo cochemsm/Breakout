@@ -45,7 +45,8 @@ public class PowerUp_Rocket : MonoBehaviour {
             foreach (var child in children) {
                 child.Stop();
             }
-            
+
+            transform.GetChild(2).GetComponent<ParticleSystem>().Play();
             transform.DetachChildren();
             Destroy(gameObject);
         }

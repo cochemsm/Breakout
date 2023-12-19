@@ -6,7 +6,7 @@ public class PowerUp {
 
     public PowerUp() {
         Type = (typesOfPowerUps) Random.Range(0, typesOfPowerUps.GetNames(typeof(typesOfPowerUps)).Length);
-        Type = typesOfPowerUps.Heart;
+        Type = typesOfPowerUps.Rocket;
     }
 
     public void activatePowerUp() {

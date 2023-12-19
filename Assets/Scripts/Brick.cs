@@ -13,6 +13,9 @@ public class Brick : MonoBehaviour {
     }
 
     public void DestroyBrick() {
+        transform.GetChild(0).GetComponent<ParticleSystem>().Play();
+        transform.DetachChildren();
+
         GameManager.Instance.BrickBroken();
         Destroy(gameObject);
         OnBrickHit?.Invoke(this);

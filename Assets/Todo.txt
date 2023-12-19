@@ -22,10 +22,7 @@ Audio
     Fist
 
 Particle
-    Brick destroy
-    Rocket destroy
     Jetpack
-    Heart
 
 Sprites
     New Bricks
@@ -43,6 +40,5 @@ UI
     Change font?
 
 Main Menu
-    GameManager fix (no refs)
     Button Sprites
     New Background
