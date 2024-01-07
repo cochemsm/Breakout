@@ -4,10 +4,12 @@ public class Ball : MonoBehaviour {
     Rigidbody2D rigidbody2d;
     private Vector3 initialPosition;
     private bool move = false;
+    private AudioSource hitSound;
 
     private void Awake() {
         rigidbody2d = GetComponent<Rigidbody2D>();
-        initialPosition = transform.position;;
+        initialPosition = transform.position;
+        hitSound = GetComponent<AudioSource>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
@@ -22,6 +24,8 @@ public class Ball : MonoBehaviour {
                 collision.gameObject.GetComponent<Rigidbody2D>().velocity + 
                 new Vector2(Mathf.Lerp(-1f, 1f, percent), 1)).normalized * rigidbody2d.velocity.magnitude;
         }
+
+        hitSound.Play();
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {

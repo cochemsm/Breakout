@@ -16,6 +16,7 @@ public class PowerUps : MonoBehaviour {
         Destroy(gameObject);
 
         PowerUpEvent?.Invoke(new PowerUp());
+        AudioManager.Instance.PlayCollectPowerUpSoundEffect();
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {

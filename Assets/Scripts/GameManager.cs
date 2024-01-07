@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 
 public class GameManager : MonoBehaviour {
-    public static GameManager instance;
+    private static GameManager instance;
     public static GameManager Instance => instance;
 
     private int activeBricks = 0;
@@ -62,6 +62,7 @@ public class GameManager : MonoBehaviour {
     }
 
     public void BrickBroken() {
+        AudioManager.Instance.PlayBrickBreakSoundEffect();
         score++;
         scoreText.text = score.ToString();
         activeBricks--;
@@ -171,6 +172,7 @@ public class GameManager : MonoBehaviour {
             lives++;
             livesText.text = lives.ToString();
             player.PlayHearts();
+            AudioManager.Instance.PlayHealthPowerUpCollected();
         }
     }
 }
