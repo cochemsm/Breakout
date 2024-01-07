@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class PowerUp {
-    public enum typesOfPowerUps {Rocket, Laser, Heart}
+    public enum typesOfPowerUps {Rocket, Heart}
     public typesOfPowerUps Type { get; private set; }
 
     public PowerUp() {

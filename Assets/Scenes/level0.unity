@@ -131,18 +131,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 972207267679379747, guid: 8d0c2775d0fd90b4fad07bc125d0cbdb, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2435888769174287861, guid: 8d0c2775d0fd90b4fad07bc125d0cbdb, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 3902421745370666065, guid: 8d0c2775d0fd90b4fad07bc125d0cbdb, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 5083629500209809081, guid: 8d0c2775d0fd90b4fad07bc125d0cbdb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -183,17 +171,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6362168463918340685, guid: 8d0c2775d0fd90b4fad07bc125d0cbdb, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 8689020459381343422, guid: 8d0c2775d0fd90b4fad07bc125d0cbdb, type: 3}
       propertyPath: m_Name
       value: Main Camera
-      objectReference: {fileID: 0}
-    - target: {fileID: 8990091193659206084, guid: 8d0c2775d0fd90b4fad07bc125d0cbdb, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -395,10 +375,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7225156981898409081, guid: cbcf489ec5b9aa248993b99c9c673316, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8662389744060963982, guid: cbcf489ec5b9aa248993b99c9c673316, type: 3}
       propertyPath: m_Name
       value: Ball
@@ -539,10 +515,6 @@ PrefabInstance:
     - target: {fileID: 6991445312189475368, guid: 68a15302da8c3674f82a92fb795a19e2, type: 3}
       propertyPath: m_Name
       value: Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 7712104916191969186, guid: 68a15302da8c3674f82a92fb795a19e2, type: 3}
-      propertyPath: m_PresetInfoIsWorld
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8596150084278915806, guid: 68a15302da8c3674f82a92fb795a19e2, type: 3}
       propertyPath: m_Camera

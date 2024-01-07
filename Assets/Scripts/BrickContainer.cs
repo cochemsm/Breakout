@@ -3,16 +3,15 @@ using UnityEngine;
 public class BrickContainer : MonoBehaviour {
     [SerializeField] private GameObject brickPrefab;
     private char[,] bricks = new char[10, 11];
-    private int BrickAmount;
     private TextAsset level;
 
     private void Awake() {
-        LoadLevel();
-        SetPositionOfAllBricks();
+        LoadLevel(GameManager.Instance.CurrentLevel);    
     }
 
-    private void LoadLevel() {
-        level = Resources.Load<TextAsset>("level000");
+    public void LoadLevel(int levelNum) {
+        string sceneName = "level00" + levelNum;
+        level = Resources.Load<TextAsset>(sceneName);
         char[] type = level.text.ToCharArray();
         int y = 0;
         int x = 0;
@@ -27,6 +26,8 @@ public class BrickContainer : MonoBehaviour {
                 x = 0;
             }
         }
+
+        SetPositionOfAllBricks();
     }
 
     private GameObject FindType(char c) {
@@ -52,9 +53,5 @@ public class BrickContainer : MonoBehaviour {
                 SpawnBrick(FindType(bricks[x, y]), new Vector3(((x + 1) * 0.6f) - 3.3f, ((y + 1) * -0.25f) + 3.95f, 0));
             }
         }
-    }
-
-    private void CheckBricks() {
-        
     }
 }

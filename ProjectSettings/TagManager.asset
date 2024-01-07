@@ -12,6 +12,7 @@ TagManager:
   - Lives
   - Lost
   - Score
+  - bricks
   layers:
   - Default
   - TransparentFX

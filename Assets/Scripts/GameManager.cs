@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour {
     private int activeBricks = 0;
     private int score = 0;
     private int lives = 3;
+    private int currentLevel = 1;
+    public int CurrentLevel => currentLevel;
 
     private TMP_Text scoreText;
     private TMP_Text livesText;
@@ -17,6 +19,8 @@ public class GameManager : MonoBehaviour {
 
     private GameObject ball;
     private Player player;
+
+    private BrickContainer bricks;
 
     private bool respawn = true;
     private bool death = false;
@@ -67,7 +71,13 @@ public class GameManager : MonoBehaviour {
         scoreText.text = score.ToString();
         activeBricks--;
         if (activeBricks == 0) {
-            LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            currentLevel++;
+            if (currentLevel > 3) {
+                currentLevel = 1;
+                LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                return;
+            }
+            LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 
@@ -94,6 +104,8 @@ public class GameManager : MonoBehaviour {
 
         ball = GameObject.FindGameObjectWithTag("ball");
         player = GameObject.FindGameObjectWithTag("player").GetComponent<Player>();
+
+        bricks = GameObject.FindGameObjectWithTag("bricks").GetComponent<BrickContainer>();
     }
 
     private bool CheckRefrences() {
@@ -117,6 +129,9 @@ public class GameManager : MonoBehaviour {
         if (player == null) {
             return false;
         }
+        if (bricks == null) {
+            return false;
+        }
 
         return true;
     }
@@ -133,6 +148,7 @@ public class GameManager : MonoBehaviour {
             death = true;
             lostText.text = "You lost!";
             respawnText.text = "press space to retry";
+            currentLevel = 0;
         } else {
             respawn = true;
             respawnText.text = "press space to continue";
@@ -165,9 +181,9 @@ public class GameManager : MonoBehaviour {
         if (activePowerUp.Type == PowerUp.typesOfPowerUps.Rocket) {
             Instantiate(rocketPowerUpPrefab, player.transform.position, Quaternion.identity);
         }
-        if (activePowerUp.Type == PowerUp.typesOfPowerUps.Laser) {
-            Instantiate(laserPowerUpPrefab, player.transform.position, Quaternion.identity);
-        }
+        // if (activePowerUp.Type == PowerUp.typesOfPowerUps.Laser) {
+        //    Instantiate(laserPowerUpPrefab, player.transform.position, Quaternion.identity);
+        // }
         if (activePowerUp.Type == PowerUp.typesOfPowerUps.Heart) {
             lives++;
             livesText.text = lives.ToString();
